@@ -1,0 +1,28 @@
+module "vm" {
+  source = "../modules/vm"
+  rg_name           = "rg-infra-uat-01"
+  address_space     = "10.190.192.0/18"
+  address_prefixes  = "10.190.193.0/24"
+  ssh_public_key    = "id_rsa.pub"
+  vnet_name         = "vnet-infra-uat-01"
+  subnet_name       = "sub-infra-uat-01"
+  nic_name          = "nic-vm-dev-02"
+  location          = "East US 2"
+  ip_config_name    = "ip-uat-ni-config"
+  pri_ip_alloc      = "Dynamic"
+  vm_name           = "vm-monit-uat-01"
+  vm_size           = "Standard_B2s"
+  admin_username    = "adminuser"
+  disk_caching      = "ReadWrite"
+  sa_type           = "Standard_LRS"
+  src_img_pub       = "Canonical"
+  src_img_offer     = "0001-com-ubuntu-server-focal"
+  src_img_sku       = "20_04-lts-gen2"
+  src_img_ver       = "latest"
+  tags = {
+    ApplicationName = "Testing_APP"
+    Env             = "uat"
+    Owner           = "rahulsharma@teksystems.com"
+    Team            = "DevOps"
+  }
+}
